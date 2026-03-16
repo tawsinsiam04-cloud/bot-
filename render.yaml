@@ -1,17 +1,13 @@
 services:
   - type: web
-    name: ai-sniper-telegram-bot
+    name: bot
     runtime: python39
     region: oregon
     plan: free
-    buildCommand: pip install --upgrade pip setuptools wheel && pip install --only-binary :all: -r requirements.txt
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
     startCommand: gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --threads 4
     envVars:
       - key: TELEGRAM_TOKEN
         scope: runtime
       - key: TELEGRAM_CHAT_ID
         scope: runtime
-      - key: ENTRY_OFFSET_SECONDS
-        value: "20"
-      - key: CACHE_TTL_SECONDS
-        value: "30"
