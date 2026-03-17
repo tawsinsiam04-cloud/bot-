@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: bot
+    name: ai-sniper-telegram-bot
     runtime: python39
     region: oregon
     plan: free
@@ -11,3 +11,7 @@ services:
         scope: runtime
       - key: TELEGRAM_CHAT_ID
         scope: runtime
+      - key: ENTRY_OFFSET_SECONDS
+        value: "20"
+      - key: CACHE_TTL_SECONDS
+        value: "30"
